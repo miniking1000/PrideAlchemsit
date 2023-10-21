@@ -1,0 +1,8 @@
+merge-material: CAULDRON
+upgrade-material: AMETHYST_CLUSTER
+basic-chance: 30
+buy-chance: 5
+up-price: 20
+up-per-lvl: 5
+up-static: False
+merge-price: 250

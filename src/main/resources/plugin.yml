@@ -1,0 +1,6 @@
+name: PrideAlchemsit
+version: '${version}'
+main: org.pythonchik.pridealchemsit.PrideAlchemsit
+api-version: '1.20'
+commands:
+  alchemist: {}
