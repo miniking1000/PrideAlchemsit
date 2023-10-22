@@ -60,7 +60,6 @@ public class XP {
             float experience = (float) remainder / (float) experienceNeeded;
             experience = round(experience, 2);
 
-
             //Set Everything
             player.setLevel(level);
             player.setExp(experience);

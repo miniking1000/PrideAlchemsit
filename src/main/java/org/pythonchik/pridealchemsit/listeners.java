@@ -416,6 +416,7 @@ public class listeners implements Listener {
         if (event.getInventory().getItem(3) == null && event.getInventory().getItem(5) == null){
             return;
         }
+
         if (event.getInventory().getItem(3) != null) {
             if (!event.getPlayer().getInventory().addItem(event.getInventory().getItem(3)).equals(new HashMap<>())){
                 ItemStack item9 = event.getPlayer().getInventory().getItemInMainHand();

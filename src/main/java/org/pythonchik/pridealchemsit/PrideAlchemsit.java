@@ -35,7 +35,6 @@ public final class PrideAlchemsit extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
     }
-
     public void loadConfig() {
         File configFile = new File(getDataFolder(), "config.yml");
         if (!configFile.exists()) {

@@ -1,5 +1,4 @@
 package org.pythonchik.pridealchemsit;
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
