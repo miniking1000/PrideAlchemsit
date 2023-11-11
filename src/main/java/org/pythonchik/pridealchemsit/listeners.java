@@ -217,17 +217,13 @@ public class listeners implements Listener {
                         //player have more that enough xp, potions have custom effects
                         ItemStack potion = event.getInventory().getItem(3).getType().equals(Material.POTION) ? new ItemStack(Material.POTION) : event.getInventory().getItem(3).getType().equals(Material.SPLASH_POTION) ? new ItemStack(Material.SPLASH_POTION) : new ItemStack(Material.LINGERING_POTION);
                         PotionMeta pometa = (PotionMeta) potion.getItemMeta();
-                        int i3 = 0;
+
                         for (PotionEffect met : ((PotionMeta) inv.getItem(3).getItemMeta()).getCustomEffects()) {
-                            i3 = 0;
-                            for (PotionEffect ksdmfsalkdm : pometa.getCustomEffects()) {
-                                i3 = i3 + 1;
-                            }
-                            if (i3 >5) continue;
+                            if (pometa.getCustomEffects().size() >6) break;
                             if (((PotionMeta) inv.getItem(5).getItemMeta()).hasCustomEffect(met.getType())) {
                                 for (PotionEffect met2 : ((PotionMeta) inv.getItem(5).getItemMeta()).getCustomEffects()) {
                                     if (met2.getType() == met.getType()) {
-                                        pometa.addCustomEffect(new PotionEffect(met.getType(), Math.min(met.getDuration() + met2.getDuration(),12000), Math.min((met.getAmplifier() + met2.getAmplifier()), 5)), true);
+                                        pometa.addCustomEffect(new PotionEffect(met.getType(), Math.min(met.getDuration() + met2.getDuration(),12000), Math.min((met.getAmplifier() + met2.getAmplifier() == 0 ? 1 : met.getAmplifier()+met2.getAmplifier()), config.getKeys(false).contains(met.getType().getName())?config.getInt(met.getType().getName()):config.getInt("this-super-long-string-in-this-config-will-always-bother-you-and-you-can-not-change-it-because-it-will-break-every-thing"))), true);
                                         break;
                                     }
                                 }
@@ -235,17 +231,12 @@ public class listeners implements Listener {
                                 pometa.addCustomEffect(new PotionEffect(met.getType(), met.getDuration(), met.getAmplifier()), true);
                             }
                         }
-                        int i5 = 0;
                         for (PotionEffect met : ((PotionMeta) inv.getItem(5).getItemMeta()).getCustomEffects()) {
-                            i5 = 0;
-                            for (PotionEffect ksdmfsalkdm : pometa.getCustomEffects()) {
-                                i5 = i5 + 1;
-                            }
-                            if (i5 > 5) continue;
+                            if (pometa.getCustomEffects().size() >6) break;
                             if (((PotionMeta) inv.getItem(3).getItemMeta()).hasCustomEffect(met.getType())) {
                                 for (PotionEffect met2 : ((PotionMeta) inv.getItem(3).getItemMeta()).getCustomEffects()) {
                                     if (met2.getType() == met.getType()) {
-                                        pometa.addCustomEffect(new PotionEffect(met.getType(), Math.min(met.getDuration() + met2.getDuration(),12000), Math.min((met.getAmplifier() + met2.getAmplifier()), 5)), true);
+                                        pometa.addCustomEffect(new PotionEffect(met.getType(), Math.min(met.getDuration() + met2.getDuration(),12000), Math.min((met.getAmplifier() + met2.getAmplifier() == 0 ? 1 : met.getAmplifier()+met2.getAmplifier()), config.getKeys(false).contains(met.getType().getName())?config.getInt(met.getType().getName()):config.getInt("this-super-long-string-in-this-config-will-always-bother-you-and-you-can-not-change-it-because-it-will-break-every-thing"))), true);
                                         break;
                                     }
                                 }
@@ -273,7 +264,6 @@ public class listeners implements Listener {
                                 pometa.setColor(Color.YELLOW);
                             }
                         }
-                        //pometa.getPersistentDataContainer().set(new NamespacedKey(plugin,"I-tem"),PersistentDataType.STRING,"preview");
                         potion.setItemMeta(pometa);
 
                         inv.setItem(3, new ItemStack(Material.AIR));
@@ -421,7 +411,7 @@ public class listeners implements Listener {
             if (!event.getPlayer().getInventory().addItem(event.getInventory().getItem(3)).equals(new HashMap<>())){
                 ItemStack item9 = event.getPlayer().getInventory().getItemInMainHand();
                 event.getPlayer().getInventory().setItemInMainHand(event.getInventory().getItem(3));
-                event.getPlayer().dropItem(false);
+                event.getPlayer().dropItem(true);
                 event.getPlayer().getInventory().setItemInMainHand(item9);
             }
         }
@@ -429,7 +419,7 @@ public class listeners implements Listener {
             if (!event.getPlayer().getInventory().addItem(event.getInventory().getItem(5)).equals(new HashMap<>())){
                 ItemStack item9 = event.getPlayer().getInventory().getItemInMainHand();
                 event.getPlayer().getInventory().setItemInMainHand(event.getInventory().getItem(5));
-                event.getPlayer().dropItem(false);
+                event.getPlayer().dropItem(true);
                 event.getPlayer().getInventory().setItemInMainHand(item9);
             }
         }

@@ -6,3 +6,5 @@ up-price: 20
 up-per-lvl: 5
 up-static: False
 merge-price: 250
+this-super-long-string-in-this-config-will-always-bother-you-and-you-can-not-change-it-because-it-will-break-every-thing: 4
+HEAL: 2
